@@ -1,9 +1,12 @@
-import mongoose from 'mongoose';
-import './api/users/user.model';
-const User = mongoose.model('User');
+'use strict';
 
-const seed = {
-  data : [{
+var mongoose = require('mongoose'),
+  User = require('./api/users/user.model'),
+  promisify = require('./promisify'),
+  seed;
+
+seed = {
+  data: [{
     email: 'mhatami@thinkful.com',
     firstName: 'Mehran',
     lastName: 'Hatami',
@@ -47,28 +50,18 @@ const seed = {
     birthDate: new Date(1990, 9, 16)
   }],
 
-  run: async () => {
-    try {
-      await User.find({}).remove();
-      await User.create(seed.data);
-      console.log('Seed data has been successfully inserted!');
-    } catch(err){
-      console.error('Error on inserting seed data:', err);
-    }
+  run: function() {
+    promisify(User.find({}).remove())
+      .then(function() {
+        return User.create(seed.data);
+      })
+      .then(function() {
+        console.log('Seed data has been successfully inserted!');
+      })
+      .catch(function(err) {
+        console.error('Error on inserting seed data:', err);
+      });
   }
 };
 
-export default seed;
-
-// Q(UserPayout.find({}).remove())
-//   .then(function() {
-//     return UserPayout.create(seedData);
-//   })
-//   .then(function () {
-//     console.log('Seed data has been successfully inserted!');
-//     //process.exit(0);
-//   })
-//   .catch(function (err) {
-//     console.error('Error on inserting seed data:', err);
-//     //process.exit(0);
-//   });
+module.exports = seed;

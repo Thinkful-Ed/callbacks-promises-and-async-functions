@@ -1,13 +1,12 @@
-
-export function notFound(req, res) {
-  let viewFilePath = '404';
-  let statusCode = 404;
-  let result = {
-    status: statusCode
-  };
+exports.notFound = function(req, res) {
+  var viewFilePath = '404',
+    statusCode = 404,
+    result = {
+      status: statusCode
+    };
 
   res.status(result.status);
-  res.render(viewFilePath, (err) => {
+  res.render(viewFilePath, function(err) {
     if (err) {
       return res.json(result, result.status);
     }

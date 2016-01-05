@@ -7,45 +7,47 @@
  * DELETE  /things/:id          ->  destroy
  */
 
-import { notFound } from '../../components/errors';
-import mongoose from 'mongoose';
-import User from './user.model';
+var notFound = require('../../components/errors').notFound,
+  mongoose = require('mongoose'),
+  promisify = require('../../promisify'),
+  User = require('./user.model');
 
-export async function index (req, res, next) {
-  try {
-    const users = await User.find();
-    res.status(200).json(users);
-  } catch(err){
-    next(err);
-  }
+exports.index = function(req, res, next) {
+  promisify(User.find())
+    .then(function(users) {
+      res.status(200).json(users);
+    })
+    .catch(next);
 };
 
-
-export async function show (req, res, next) {
-  try {
-    const user = await User.findById(req.params.id);
-    if(!user){
-      return notFound(req, res);
-    }
-    res.status(200).json(user);
-  } catch(err){
-    next(err);
-  }
+exports.show = function(req, res, next) {
+  promisify(User.findById(req.params.id))
+    .then(function(user) {
+      if (!user) {
+        return notFound(req, res);
+      }
+      res.status(200).json(user);
+    })
+    .catch(next);
 };
 
-
-export async function create (req, res, next) {
-  const createdUser = await Promise.resolve({});
-  res.status(200).json(createdUser);
+exports.create = function(req, res, next) {
+  promisify.delay(10, {})
+    .then(function(createdUser) {
+      res.status(200).json(createdUser);
+    });
 };
 
-
-export async function update (req, res, next) {
-  const updatedUser = await Promise.resolve({});
-  res.status(200).json(updatedUser);
+exports.update = function(req, res, next) {
+  promisify.delay(10, {})
+    .then(function(updatedUser) {
+      res.status(200).json(updatedUser);
+    });
 };
 
-export async function destroy (req, res, next) {
-  const data = await Promise.resolve({});
-  res.status(200).json({data});
+exports.destroy = function(req, res, next) {
+  promisify.delay(10, {})
+    .then(function(data) {
+      res.status(200).json(data);
+    });
 };

@@ -1,12 +1,12 @@
-// import 'babel-core/polyfill';
-import path from 'path';
-import express from 'express';
-import mongoose from 'mongoose';
-import routes from './routes';
-import seed from './seed';
+'use strict';
 
-const port = process.env.PORT || 8080;
-const server = express();
+var path = require('path'),
+  express = require('express'),
+  mongoose = require('mongoose'),
+  routes = require('./routes'),
+  seed = require('./seed'),
+  port = process.env.PORT || 8080,
+  server = express();
 
 // server.use(express.static(path.join(__dirname, 'public')));
 server.set('appPath', path.join(__dirname, 'public'));
@@ -18,20 +18,21 @@ server.get('/api/*', function(req, res) {
 });
 
 // error handler
-server.use((err, req, res, next) => {
+server.use(function(err, req, res, next) {
   if (err.status && Array.isArray(err.errors)) {
-    return res.status(err.status).json(err.errors.map((e) => e.message));
-  } else if(err instanceof Error){
+    return res.status(err.status).json(err.errors.map(function(e) {
+      return e.message;
+    }));
+  } else if (err instanceof Error) {
     return res.status(500).send(err);
   }
   next(err);
 });
 
-mongoose.connection.open('mongodb://localhost/workshop');
+mongoose.connection.open('mongodb://localhost/workshop-1493');
 
 seed.run();
 
-server.listen(port, () => {
-  /* eslint-disable no-console */
+server.listen(port, function() {
   console.log(`The server is running at http://localhost:${port}/`);
 });

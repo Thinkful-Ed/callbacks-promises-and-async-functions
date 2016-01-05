@@ -59,16 +59,3 @@ const seed = {
 };
 
 export default seed;
-
-// Q(UserPayout.find({}).remove())
-//   .then(function() {
-//     return UserPayout.create(seedData);
-//   })
-//   .then(function () {
-//     console.log('Seed data has been successfully inserted!');
-//     //process.exit(0);
-//   })
-//   .catch(function (err) {
-//     console.error('Error on inserting seed data:', err);
-//     //process.exit(0);
-//   });

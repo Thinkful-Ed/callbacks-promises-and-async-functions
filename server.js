@@ -27,7 +27,7 @@ server.use((err, req, res, next) => {
   next(err);
 });
 
-mongoose.connection.open('mongodb://localhost/workshop');
+mongoose.connection.open('mongodb://localhost/workshop-1493');
 
 seed.run();
 

@@ -2,7 +2,6 @@
 
 var mongoose = require('mongoose'),
   User = require('./api/users/user.model'),
-  promisify = require('./promisify'),
   seed;
 
 seed = {
@@ -51,16 +50,17 @@ seed = {
   }],
 
   run: function() {
-    promisify(User.find({}).remove())
-      .then(function() {
-        return User.create(seed.data);
-      })
-      .then(function() {
+    User.find({}).remove().exec(function(err){
+      if(err){
+        return console.error('Error on inserting seed data:', err);
+      }
+      User.create(seed.data, function(err){
+        if(err){
+          return console.error('Error on inserting seed data:', err);
+        }
         console.log('Seed data has been successfully inserted!');
-      })
-      .catch(function(err) {
-        console.error('Error on inserting seed data:', err);
       });
+    });
   }
 };
 

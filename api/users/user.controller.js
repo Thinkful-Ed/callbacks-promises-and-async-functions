@@ -9,45 +9,53 @@
 
 var notFound = require('../../components/errors').notFound,
   mongoose = require('mongoose'),
-  promisify = require('../../promisify'),
+  delay = require('../../delay'),
   User = require('./user.model');
 
 exports.index = function(req, res, next) {
-  promisify(User.find())
-    .then(function(users) {
-      res.status(200).json(users);
-    })
-    .catch(next);
+  User.find({}, function(err, users) {
+    if(err){
+      return next(err);
+    }
+    res.status(200).json(users);
+  });
 };
 
 exports.show = function(req, res, next) {
-  promisify(User.findById(req.params.id))
-    .then(function(user) {
-      if (!user) {
-        return notFound(req, res);
-      }
-      res.status(200).json(user);
-    })
-    .catch(next);
+  User.findById(req.params.id, function(err, user) {
+    if(err){
+      return next(err);
+    }
+    if (!user) {
+      return notFound(req, res);
+    }
+    res.status(200).json(user);
+  });
 };
 
 exports.create = function(req, res, next) {
-  promisify.delay(10, {})
-    .then(function(createdUser) {
-      res.status(200).json(createdUser);
-    });
+  delay(10, {}, function(err, createdUser) {
+    if(err){
+      return next(err);
+    }
+    res.status(200).json(createdUser);
+  });
 };
 
 exports.update = function(req, res, next) {
-  promisify.delay(10, {})
-    .then(function(updatedUser) {
-      res.status(200).json(updatedUser);
-    });
+  delay(10, {}, function(err, updatedUser) {
+    if(err){
+      return next(err);
+    }
+    res.status(200).json(updatedUser);
+  });
 };
 
 exports.destroy = function(req, res, next) {
-  promisify.delay(10, {})
-    .then(function(data) {
-      res.status(200).json(data);
-    });
+  delay(10, {}, function(err, data) {
+    if(err){
+      return next(err);
+    }
+    res.status(200).json(data);
+  });
 };

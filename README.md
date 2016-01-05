@@ -2,5 +2,5 @@
 
 Promises helped us with the painful experience we had with Callbacks and now Async functions allows to simply `await` on a Promise. We will cover all the three patterns with live coding to see how easy it is to write a cleaner code using async/await.
 
-## Branch: promises
-Implementing CRUD using Promises
+## Branch: callbacks
+Implementing CRUD using Callbacks

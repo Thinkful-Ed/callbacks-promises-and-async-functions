@@ -1,0 +1,43 @@
+[{
+  "email": "mhatami@thinkful.com",
+  "firstName": "Mehran",
+  "lastName": "Hatami",
+  "phoneNumber": "+989396396040",
+  "birthDate": "1981-03-27T20:30:00.000Z"
+}, {
+  "email": "jahensle85@me.com",
+  "firstName": "Jared",
+  "lastName": "Hensley",
+  "phoneNumber": "***",
+  "birthDate": "1985-08-14T20:30:00.000Z"
+}, {
+  "email": "ctsongas@thinkful.com",
+  "firstName": "Chris",
+  "lastName": "Tsongas",
+  "phoneNumber": "***",
+  "birthDate": "1991-03-07T20:30:00.000Z"
+}, {
+  "email": "mkhan@thinkful.com",
+  "firstName": "Mohammad",
+  "lastName": "Umair Khan",
+  "phoneNumber": "***",
+  "birthDate": "1987-10-01T20:30:00.000Z"
+}, {
+  "email": "melanie.brgr@gmail.com",
+  "firstName": "Michelle",
+  "lastName": "Gerber",
+  "phoneNumber": "***",
+  "birthDate": "1983-04-22T20:30:00.000Z"
+}, {
+  "email": "isha.ojha@gmail.com",
+  "firstName": "Isha",
+  "lastName": "Ojha",
+  "phoneNumber": "***",
+  "birthDate": "1993-12-07T20:30:00.000Z"
+}, {
+  "email": "mtehrani@thinkful.com",
+  "firstName": "Mahdi",
+  "lastName": "Tehrani",
+  "phoneNumber": "***",
+  "birthDate": "1990-10-15T20:30:00.000Z"
+}]

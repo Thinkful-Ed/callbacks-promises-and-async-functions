@@ -1,4 +1,20 @@
 # Callbacks, Promises and Async Functions
+To run the app first run:   
+```
+npm install
+```   
+then to lunch the server using each pattern you could do:   
+```
+npm run callbacks
+```   
+or:    
+```
+npm run promises
+```   
+or:   
+```
+npm run async-await
+```   
 
 ##About me
  - A JavaScript enthusiast, developer with more than 10 years of experience

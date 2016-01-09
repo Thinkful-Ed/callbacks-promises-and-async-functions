@@ -2,7 +2,7 @@
   "name": "my-project",
   "version": "1.0.0",
   "scripts": {
-    "async": "babel-node async-await/server.js",
+    "async-await": "babel-node async-await/server.js",
     "callbacks": "node callbacks/server.js",
     "promises": "node promises/server.js"
   },

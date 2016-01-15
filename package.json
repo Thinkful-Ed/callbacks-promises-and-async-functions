@@ -4,6 +4,7 @@
   "scripts": {
     "async-await": "babel-node async-await/server.js",
     "callbacks": "node callbacks/server.js",
+    "generators": "node generators/server.js",
     "promises": "node promises/server.js"
   },
   "devDependencies": {
